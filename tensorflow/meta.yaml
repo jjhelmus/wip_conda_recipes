@@ -1,0 +1,44 @@
+package:
+  name: tensorflow
+  version: "0.7.1"
+
+source:
+  git_url: https://github.com/tensorflow/tensorflow
+  git_rev: v0.7.1
+
+build:
+  number: 1
+  skip: True  # [win]
+  skip: True  # [py26]
+  skip: True  # [py33]
+  entry_points:
+    - tensorboard = tensorflow.tensorboard.tensorboard:main
+
+requirements:
+  build:
+    - python
+    - pip
+    - swig
+    - numpy >=1.10.1
+    - protobuf ==3.0.0b2
+    - six >=1.10.0
+    - wheel
+    # bazel is also a build requirement but is being provided by the system
+  run:
+    - python
+    - numpy >=1.10.1
+    - protobuf ==3.0.0b2
+    - six >=1.10.0
+
+test:
+  imports:
+    - tensorflow
+
+about:
+  home: http://tensorflow.org/
+  license: Apache 2.0
+  summary: TensorFlow helps the tensors flow
+
+extra:
+  recipe-maintainers:
+    - jjhelmus
