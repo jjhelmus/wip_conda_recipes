@@ -1,0 +1,32 @@
+package:
+    name: pyglpk
+    version: 0.3
+
+source:
+    fn: pyglpk-0.3.tar.bz2
+    url: http://tfinley.net/software/pyglpk/pyglpk-0.3.tar.bz2
+
+    patches:
+        - patch.diff
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - python
+        - glpk <=4.52   # 4.53+ does not support the lpx API
+        - gmp
+
+    run:
+        - python
+        - glpk <=4.52   # 4.53+ does not support the lpx API
+        - gmp
+
+test:
+    imports:
+        - glpk
+
+about:
+    home: http://tfinley.net/software/pyglpk/
+    license: GPL
