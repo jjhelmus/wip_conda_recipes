@@ -1,11 +1,11 @@
 # Tested on Mac OS X 10.9 using clang compiler provided by XCode
 package:
     name: opencv
-    version: 2.4.10
+    version: 2.4.12
 
 source:
-    fn: opencv-2.4.10.zip
-    url: http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.10/opencv-2.4.10.zip
+    fn: opencv-2.4.12.zip
+    url: https://github.com/Itseez/opencv/archive/2.4.12.zip
 
 build:
     number: 0
