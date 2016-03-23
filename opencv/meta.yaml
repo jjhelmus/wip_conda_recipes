@@ -1,0 +1,33 @@
+# Tested on Mac OS X 10.9 using clang compiler provided by XCode
+package:
+    name: opencv
+    version: 2.4.10
+
+source:
+    fn: opencv-2.4.10.zip
+    url: http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.10/opencv-2.4.10.zip
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - cmake
+        - numpy x.x
+        - jpeg
+        - zlib
+        - libpng
+    run:
+        - python
+        - numpy
+        - jpeg
+        - zlib
+        - libpng
+test:
+    imports:
+      - cv2
+      - cv2.cv  
+
+about:
+    home: http://opencv.org/
+    license: BSD
