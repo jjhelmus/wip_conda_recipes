@@ -24,13 +24,14 @@ build:
 requirements:
     build:
         - cmake
+        - python
         - numpy x.x
         - jpeg
         - zlib
         - libpng
     run:
         - python
-        - numpy
+        - numpy x.x
         - jpeg
         - zlib
         - libpng
