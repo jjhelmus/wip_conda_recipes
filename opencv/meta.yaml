@@ -6,6 +6,17 @@ package:
 source:
     fn: opencv-2.4.12.zip
     url: https://github.com/Itseez/opencv/archive/2.4.12.zip
+    patches:
+        # Patch the cmake files so that dylib libraries are named with the
+        # full path to the build prefix.  As provides the libraries are named
+        # lib/libname.dylib which causes conda build to fail to link the
+        # libraries with the warning "Don't know how to find..."
+        # Note that this is not need if conda-build < 1.12.0 is used as this
+        # was before PR 312 was merged which changed the post link behavior
+        # https://github.com/conda/conda-build/pull/312
+        # Patch adapted from:
+        # http://answers.opencv.org/question/4134/cmake-install_name_tool-absolute-path-for-library-on-mac-osx/
+        - patch.txt
 
 build:
     number: 0

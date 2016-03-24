@@ -1,0 +1,52 @@
+diff --git apps/annotation/CMakeLists.txt apps/annotation/CMakeLists.txt
+index b34ef39..42afdb3 100644
+--- apps/annotation/CMakeLists.txt
++++ apps/annotation/CMakeLists.txt
+@@ -20,7 +20,7 @@ set_target_properties(${the_target} PROPERTIES
+                       DEBUG_POSTFIX "${OPENCV_DEBUG_POSTFIX}"
+                       ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH}
+                       RUNTIME_OUTPUT_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+-                      INSTALL_NAME_DIR lib
++                      INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib
+                       OUTPUT_NAME "opencv_annotation")
+ 
+ if(ENABLE_SOLUTION_FOLDERS)
+diff --git apps/haartraining/CMakeLists.txt apps/haartraining/CMakeLists.txt
+index 2ac3323..fe13a34 100644
+--- apps/haartraining/CMakeLists.txt
++++ apps/haartraining/CMakeLists.txt
+@@ -39,7 +39,7 @@ set_target_properties(opencv_haartraining_engine PROPERTIES
+                       DEBUG_POSTFIX "${OPENCV_DEBUG_POSTFIX}"
+                       ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH}
+                       RUNTIME_OUTPUT_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+-                      INSTALL_NAME_DIR lib
++                      INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib
+                      )
+ 
+ # -----------------------------------------------------------
+diff --git apps/traincascade/CMakeLists.txt apps/traincascade/CMakeLists.txt
+index 941c0ec..3b978d9 100644
+--- apps/traincascade/CMakeLists.txt
++++ apps/traincascade/CMakeLists.txt
+@@ -26,7 +26,7 @@ set_target_properties(${the_target} PROPERTIES
+                       DEBUG_POSTFIX "${OPENCV_DEBUG_POSTFIX}"
+                       ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH}
+                       RUNTIME_OUTPUT_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+-                      INSTALL_NAME_DIR lib
++                      INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib
+                       OUTPUT_NAME "opencv_traincascade")
+ 
+ if(ENABLE_SOLUTION_FOLDERS)
+diff --git cmake/OpenCVModule.cmake cmake/OpenCVModule.cmake
+index a700657..42e0e67 100644
+--- cmake/OpenCVModule.cmake
++++ cmake/OpenCVModule.cmake
+@@ -589,7 +589,7 @@ macro(ocv_create_module)
+     ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH}
+     LIBRARY_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH}
+     RUNTIME_OUTPUT_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+-    INSTALL_NAME_DIR lib
++    INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib
+   )
+ 
+   # For dynamic link numbering convenions
