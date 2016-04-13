@@ -13,10 +13,12 @@ requirements:
   build:
     - python
     - glpk
+    - openblas
 
   run:
     - python
     - glpk
+    - openblas
 
 test:
   imports:
