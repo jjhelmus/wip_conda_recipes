@@ -12,9 +12,11 @@ build:
 requirements:
   build:
     - python
+    - glpk
 
   run:
     - python
+    - glpk
 
 test:
   imports:
