@@ -1,0 +1,47 @@
+FROM centos:5.11
+MAINTAINER Jonathan J. Helmus <jjhelmus@gmail.com>
+
+ENV PATH /opt/rh/devtoolset-2/root/usr/bin:$PATH
+ENV LD_LIBRARY_PATH /opt/rh/devtoolset-2/root/usr/lib64:/opt/rh/devtoolset-2/root/usr/lib
+
+# EPEL support
+RUN yum -y install wget curl && \
+    curl -sLO https://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm && \
+    rpm -Uvh --replacepkgs epel-release-5*.rpm && \
+    rm -f epel-release-5*.rpm
+
+# Development tools
+RUN curl -sL http://people.centos.org/tru/devtools-2/devtools-2.repo > /etc/yum.repos.d/devtools-2.repo && \
+    yum -y install bzip2 make git patch unzip bison yasm diffutils \
+    autoconf automake which file \
+    devtoolset-2-binutils devtoolset-2-gcc \
+    devtoolset-2-gcc-c++ devtoolset-2-gcc-gfortran
+
+
+# Install JDK8
+RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.rpm" && \
+    mv jdk-8u77-linux-x64.rpm* jdk-8u77-linux-x64.rpm && \
+    rpm -ivh jdk-8u77-linux-x64.rpm && \
+    java -version && \
+    rm jdk-8u77-linux-x64.rpm
+
+# Install libarchive
+RUN wget http://libarchive.org/downloads/libarchive-3.1.2.tar.gz && \
+    tar xvfz libarchive-3.1.2.tar.gz && \
+    cd libarchive-3.1.2 && \
+    ./configure && \
+    make && \
+    make install && \
+    cd .. && \
+    rm libarchive-3.1.2.tar.gz
+
+# Additional stuff
+RUN yum -y install yum install kernel-devel zlib-devel
+
+# Install Bazel
+RUN  wget https://github.com/bazelbuild/bazel/archive/0.2.0.zip && \
+    unzip 0.2.0 
+
+# Broken
+#    cd bazel-0.2.0/ && \
+#    ./compile.sh
