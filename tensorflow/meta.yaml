@@ -1,10 +1,10 @@
 package:
   name: tensorflow
-  version: "0.8.0rc0"
+  version: "0.8.0"
 
 source:
   git_url: https://github.com/tensorflow/tensorflow
-  git_rev: v0.8.0rc0
+  git_rev: v0.8.0
 
 build:
   number: 0
