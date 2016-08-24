@@ -8,7 +8,7 @@ source:
   sha256: df28bbe5470171eb0199905423902a96fe370052f8458a28d40c294c662d614b
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   skip: True  # [py26]
   skip: True  # [py33]

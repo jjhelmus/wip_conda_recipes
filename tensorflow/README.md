@@ -38,4 +38,4 @@ anaconda upload /opt/conda/conda-bld/linux-64/tensorflow*.bz2
 The Dockerfile_centos5 file is an in works Docker image based on CentOS 5.
 It currently can not be used to build tensorflow.
 
-The image in Dockerfile is based on Ubuntu 14.04.
+The image in Dockerfile is based on CentOS 6.
